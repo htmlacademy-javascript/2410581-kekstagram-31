@@ -24,7 +24,6 @@ const names = [
   'Татьяна',
   'Юрий',
   'Яна',
-  'Ярослав'
 ];
 
 const messages = [
@@ -62,10 +61,14 @@ const descriptions = [
   'Крупный план цветка розы с каплями росы на нежных лепестках.',
   'Рыжий кот на подоконнике, наблюдающий за падающим снегом.',
   'Разноцветные листья, собранные в осенний букет, на деревянном столе.',
-  'Группа друзей, запускающих воздушные змеи на фоне голубого неба.'
 ];
 
-const maxUsers = 25;
+const MAX_USERS = 25;
+const MIN_OF_LIKES = 15;
+const MAX_OF_LIKES = 200;
+const MAX_OF_COMMENTS = 30;
+const MAX_OF_PHOTOS = 6;
+const MAX_OF_MESSAGES = 2;
 
 const getRandomInteger = (min, max) => {
   const lower = Math.ceil(Math.min(Math.abs(min), Math.abs(max)));
@@ -90,11 +93,11 @@ const createUnicInteger = (min, max) => {
   };
 };
 
-const getRandomId = createUnicInteger(1, maxUsers);
-const getUnicPhoto = createUnicInteger(1, maxUsers);
-const getUnicDesctiption = createUnicInteger(1, descriptions.length - 1);
+const getRandomId = createUnicInteger(1, MAX_USERS);
+const getUnicPhoto = createUnicInteger(1, MAX_USERS);
+const getUnicDesctiption = createUnicInteger(0, descriptions.length - 1);
 
-const getRandomArrayElement = (elements) => elements[getRandomInteger(0, elements.length - 1)];
+const getRandomArrayElement = (elements, firstElem = 0) => elements[getRandomInteger(firstElem, elements.length - 1)];
 
 const createCommentId = () => {
   let count = 0;
@@ -106,10 +109,15 @@ const createCommentId = () => {
 
 const getUnicCommentId = createCommentId();
 
+const getRandomComments = (maxOfMessages, msg) => {
+  const countOfMessage = createUnicInteger(1, maxOfMessages);
+  return countOfMessage() === 2 ? `${msg[1]} ${getRandomArrayElement(msg, 2)}` : `${getRandomArrayElement(msg)}`;
+};
+
 const generateComments = () => ({
   id: getUnicCommentId(),
-  avatar: `img/avatar-${getRandomInteger(1, 6)}.svg`,
-  message: getRandomArrayElement(messages),
+  avatar: `img/avatar-${getRandomInteger(1, MAX_OF_PHOTOS)}.svg`,
+  message: getRandomComments(MAX_OF_MESSAGES, messages),
   name: getRandomArrayElement(names)
 });
 
@@ -117,10 +125,10 @@ const generateUsers = () => ({
   id: getRandomId(),
   url: `photos/${getUnicPhoto()}.jpg`,
   description: descriptions[getUnicDesctiption()],
-  likes: getRandomInteger(15, 200),
-  comments: Array.from({length: getRandomInteger(0, 30)}, generateComments),
+  likes: getRandomInteger(MIN_OF_LIKES, MAX_OF_LIKES),
+  comments: Array.from({length: getRandomInteger(0, MAX_OF_COMMENTS)}, generateComments),
 });
 
-const users = Array.from({length: maxUsers}, generateUsers);
+const users = Array.from({length: MAX_USERS}, generateUsers);
 
 console.log(users); // eslint-disable-line
