@@ -1,11 +1,6 @@
 import {settings} from './settings.js';
-import {createUnicInteger} from './util.js';
-import {getRandomArrayElement} from './util.js';
-import {createCommentId} from './util.js';
-import {messages} from './data.js';
-import {names} from './data.js';
-import {descriptions} from './data.js';
-import {getRandomInteger} from './util.js';
+import {createUnicInteger, getRandomArrayElement, createCommentId, getRandomInteger} from './util.js';
+import {messages, names, descriptions} from './data.js';
 
 const getRandomId = createUnicInteger(1, settings.MAX_USERS);
 const getUnicPhoto = createUnicInteger(1, settings.MAX_USERS);
@@ -32,4 +27,6 @@ const generateUsers = () => ({
   comments: Array.from({length: getRandomInteger(0, settings.MAX_OF_COMMENTS)}, generateComments),
 });
 
-export {generateUsers};
+const generationPost = () => Array.from({length: settings.MAX_USERS}, generateUsers);
+
+export {generationPost};
