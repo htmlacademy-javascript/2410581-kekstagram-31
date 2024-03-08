@@ -19,3 +19,5 @@ similarPosts.forEach(({url, description, comments, likes}) => {
 });
 
 picturesConteiner.append(similarListFragment);
+
+export {similarPosts};
