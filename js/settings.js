@@ -5,6 +5,7 @@ const settings = {
   MAX_OF_COMMENTS: 30,
   MAX_OF_PHOTOS: 6,
   MAX_OF_MESSAGES: 2,
+  MAX_STARTING_COMMENTS: 5,
 };
 
 export {settings};

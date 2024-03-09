@@ -1,14 +1,14 @@
 import {commentsGeneration} from './comments-generation.js';
 import {similarPosts} from '../../photoGeneration.js';
 import {bigPicture} from '../variables.js';
+import {settings} from '../../settings.js';
 
-// Заполняет информацию для модального окна
 export const fillModal = (evt) => {
   const bigImg = bigPicture.querySelector('.big-picture__img img');
   const likes = bigPicture.querySelector('.likes-count');
   const description = bigPicture.querySelector('.social__caption');
   const allComments = bigPicture.querySelector('.social__comment-total-count');
-  const showComments = bigPicture.querySelector('.social__comment-shown-count');
+  const removeHiddenClasss = bigPicture.querySelector('.social__comment-shown-count');
   let node;
   let currentPhoto;
   if (evt.type === 'keydown') {
@@ -26,7 +26,7 @@ export const fillModal = (evt) => {
   likes.textContent = currentPhoto.likes;
   description.textContent = currentPhoto.description;
   allComments.textContent = currentPhoto.comments.length;
-  showComments.textContent = currentPhoto.comments.length;
+  removeHiddenClasss.textContent = currentPhoto.comments.length > settings.MAX_STARTING_COMMENTS ? settings.MAX_STARTING_COMMENTS : currentPhoto.comments.length;
 };
 
 
