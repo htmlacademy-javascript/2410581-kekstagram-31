@@ -1,4 +1,4 @@
-import {makeElements} from './makeElement.js';
+import {makeElements} from './make-element.js';
 import {settings} from '../../settings.js';
 
 const commentsGeneration = (currentPhoto) => {

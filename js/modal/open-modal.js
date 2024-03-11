@@ -1,12 +1,12 @@
 import {bigPicture, documentBody, buttonClose} from './variables.js';
-import {closeModalMouse} from './closeModal.js';
-import {onDocumentKeyDown} from './utils/onDocumentKeyDown.js';
-import {showMoreComments} from './showMoreComments.js';
+import {closeModal} from './close-modal.js';
+import {onDocumentKeyDown} from './utils/on-document-key-down.js';
+import {showMoreComments} from './show-more-comments.js';
 
 const openModal = () => {
   bigPicture.classList.remove('hidden');
   documentBody.classList.add('modal-open');
-  buttonClose.addEventListener('click', closeModalMouse);
+  buttonClose.addEventListener('click', closeModal);
   document.addEventListener('keydown', onDocumentKeyDown);
   showMoreComments();
 };

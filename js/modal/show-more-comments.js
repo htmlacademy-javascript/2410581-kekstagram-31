@@ -1,6 +1,6 @@
 import {settings} from '../settings';
 import {showMoreButton} from './variables';
-import {removeHiddenClass} from './utils/removeHiddenClass';
+import {removeHiddenClass} from './utils/remove-hidden-class';
 
 const showMoreComments = () => {
   const commentsList = document.querySelectorAll('.social__comment');
@@ -13,4 +13,4 @@ const showMoreComments = () => {
   }
 };
 
-export {showMoreComments, removeHiddenClass};
+export {showMoreComments};

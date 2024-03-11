@@ -1,7 +1,7 @@
 // import fillModal from 'utils/fillModal.js';
 import {picturesList} from './variables';
-import {fillModal} from './utils/fillPhotoModal.js';
-import {openModal} from './openModal.js';
+import {fillModal} from './utils/fill-photo-modal.js';
+import {openModal} from './open-modal.js';
 import {isEnterKey} from './utils/checks.js';
 
 picturesList.addEventListener('click', (evt) => {

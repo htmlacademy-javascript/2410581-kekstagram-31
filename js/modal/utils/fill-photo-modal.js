@@ -1,5 +1,5 @@
 import {commentsGeneration} from './comments-generation.js';
-import {similarPosts} from '../../photoGeneration.js';
+import {similarPosts} from '../../photo-generation.js';
 import {bigPicture} from '../variables.js';
 import {settings} from '../../settings.js';
 
