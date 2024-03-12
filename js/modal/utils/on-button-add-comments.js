@@ -3,7 +3,7 @@ import {settings} from '../../settings';
 import {currentPhoto} from './fill-photo-modal';
 import {makeElements} from './make-element';
 
-const removeHiddenClass = () => {
+const onButtonAddComments = () => {
   let comments = bigPicture.querySelectorAll('.social__comment');
 
   for (let i = comments.length; i < settings.MAX_STARTING_COMMENTS + comments.length; i++) {
@@ -16,8 +16,8 @@ const removeHiddenClass = () => {
   comments = bigPicture.querySelectorAll('.social__comment');
   if (comments.length === +commentsTotalCount.textContent) {
     showMoreButton.classList.add('hidden');
-    showMoreButton.removeEventListener('click', removeHiddenClass);
+    showMoreButton.removeEventListener('click', onButtonAddComments);
   }
 };
 
-export {removeHiddenClass};
+export {onButtonAddComments};

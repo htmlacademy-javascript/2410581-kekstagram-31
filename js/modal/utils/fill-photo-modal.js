@@ -10,9 +10,8 @@ export const fillModal = (evt) => {
   const likes = bigPicture.querySelector('.likes-count');
   const description = bigPicture.querySelector('.social__caption');
   const allComments = bigPicture.querySelector('.social__comment-total-count');
-  const removeHiddenClasss = bigPicture.querySelector('.social__comment-shown-count');
+  const onButtonAddCommentss = bigPicture.querySelector('.social__comment-shown-count');
   let node;
-  // let currentPhoto; убрал лишний currentPhoto
   if (evt.type === 'keydown') {
     node = evt.target.parentNode;
     currentPhoto = similarPosts[[...node.children].indexOf(evt.target) - 2];
@@ -28,7 +27,7 @@ export const fillModal = (evt) => {
   likes.textContent = currentPhoto.likes;
   description.textContent = currentPhoto.description;
   allComments.textContent = currentPhoto.comments.length;
-  removeHiddenClasss.textContent = currentPhoto.comments.length > settings.MAX_STARTING_COMMENTS ? settings.MAX_STARTING_COMMENTS : currentPhoto.comments.length;
+  onButtonAddCommentss.textContent = currentPhoto.comments.length > settings.MAX_STARTING_COMMENTS ? settings.MAX_STARTING_COMMENTS : currentPhoto.comments.length;
 };
 
 export {currentPhoto};

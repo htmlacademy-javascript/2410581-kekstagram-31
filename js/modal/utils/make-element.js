@@ -1,5 +1,3 @@
-// создает список с нужными комментариями
-
 const makeElements = (element) => {
   const newComment = document.createElement('li');
   newComment.classList.add('social__comment');

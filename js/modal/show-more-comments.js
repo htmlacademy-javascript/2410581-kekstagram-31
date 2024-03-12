@@ -1,17 +1,14 @@
 import {settings} from '../settings';
 import {showMoreButton} from './variables';
-import {removeHiddenClass} from './utils/remove-hidden-class';
+import {onButtonAddComments} from './utils/on-button-add-comments';
 import {currentPhoto} from './utils/fill-photo-modal';
 
 const showMoreComments = () => {
-  // debugger;
-  // const commentsList = document.querySelectorAll('.social__comment');
-
   if (currentPhoto.comments.length <= settings.MAX_STARTING_COMMENTS) {
     showMoreButton.classList.add('hidden');
-    showMoreButton.removeEventListener('click', removeHiddenClass);
+    showMoreButton.removeEventListener('click', onButtonAddComments);
   } else {
-    showMoreButton.addEventListener('click', removeHiddenClass);
+    showMoreButton.addEventListener('click', onButtonAddComments);
   }
 };
 

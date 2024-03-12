@@ -1,14 +1,14 @@
 import {bigPicture, documentBody, buttonClose} from './variables.js';
-import {closeModal} from './close-modal.js';
+import {onButtonCloseModal} from './close-modal.js';
 import {onDocumentKeyDown} from './utils/on-document-key-down.js';
 import {showMoreComments} from './show-more-comments.js';
 
-const openModal = () => {
+const onPhotoOpenModal = () => {
   bigPicture.classList.remove('hidden');
   documentBody.classList.add('modal-open');
-  buttonClose.addEventListener('click', closeModal);
+  buttonClose.addEventListener('click', onButtonCloseModal);
   document.addEventListener('keydown', onDocumentKeyDown);
   showMoreComments();
 };
 
-export {openModal};
+export {onPhotoOpenModal};
