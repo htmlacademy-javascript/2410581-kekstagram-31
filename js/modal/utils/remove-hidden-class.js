@@ -1,19 +1,20 @@
-import {showMoreButton} from '../variables';
+import {showMoreButton, socialCommentsList, bigPicture, commentsTotalCount, numberOfComments} from '../variables';
 import {settings} from '../../settings';
-
-const numberOfComments = document.querySelector('.social__comment-shown-count');
+import {currentPhoto} from './fill-photo-modal';
+import {makeElements} from './make-element';
 
 const removeHiddenClass = () => {
-  let commentsList = document.querySelectorAll('.social__comment.hidden');
-  for (let i = 0; i < settings.MAX_STARTING_COMMENTS; i++) {
-    if (typeof commentsList[i] === 'undefined') {
+  let comments = bigPicture.querySelectorAll('.social__comment');
+
+  for (let i = comments.length; i < settings.MAX_STARTING_COMMENTS + comments.length; i++) {
+    if (typeof currentPhoto.comments[i] === 'undefined') {
       break;
     }
-    commentsList[i].classList.remove('hidden');
+    socialCommentsList.append(makeElements(currentPhoto.comments[i]));
     numberOfComments.textContent = +numberOfComments.textContent + 1;
   }
-  commentsList = document.querySelectorAll('.social__comment.hidden');
-  if (commentsList.length === 0) {
+  comments = bigPicture.querySelectorAll('.social__comment');
+  if (comments.length === +commentsTotalCount.textContent) {
     showMoreButton.classList.add('hidden');
     showMoreButton.removeEventListener('click', removeHiddenClass);
   }

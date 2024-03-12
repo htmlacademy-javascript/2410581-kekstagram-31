@@ -20,5 +20,3 @@ picturesList.addEventListener('keydown', (evt) => {
     }
   }
 });
-
-

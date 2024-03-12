@@ -7,7 +7,8 @@ const commentsGeneration = (currentPhoto) => {
   for (let i = 0; i < currentPhoto.comments.length; i++) {
     const newElement = makeElements(currentPhoto.comments[i]);
     if (i > settings.MAX_STARTING_COMMENTS - 1) {
-      newElement.classList.add('hidden');
+      // newElement.classList.add('hidden'); убираю скрытие всех комментариев
+      break; // завершаем цикл, если комментариев будет больше чем максимум (5)
     }
     commentsList.append(newElement);
   }
