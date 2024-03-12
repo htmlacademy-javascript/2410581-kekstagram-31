@@ -1,8 +1,6 @@
-import {bigPicture, commentsCount, commentLoader, documentBody, buttonClose} from './variables.js';
+import {bigPicture, commentsCount, commentLoader, documentBody, buttonClose, showMoreButton} from './variables.js';
 import {onDocumentKeyDown} from './utils/on-document-key-down.js';
-
 import {onButtonAddComments} from './utils/on-button-add-comments.js';
-const showMoreButton = document.querySelector('.social__comments-loader');
 
 const onButtonCloseModal = () => {
   bigPicture.classList.add('hidden');
