@@ -18,4 +18,8 @@ similarPosts.forEach(({url, description, comments, likes}) => {
   similarListFragment.append(similarListElement);
 });
 
-picturesConteiner.append(similarListFragment);
+const addAllPictures = () => {
+  picturesConteiner.append(similarListFragment);
+};
+
+export {similarPosts, addAllPictures};
