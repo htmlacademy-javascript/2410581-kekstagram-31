@@ -1,4 +1,5 @@
 import {textDescription, uploadForm, hashtags} from '../variables';
+import {settings} from '../../settings';
 
 const onFormCheckValidation = (evt) => {
 
@@ -9,15 +10,15 @@ const onFormCheckValidation = (evt) => {
     errorTextParent: 'img-upload__field-wrapper',
   });
 
-  const checkLength = () => textDescription.value.length <= 140;
+  const checkLength = () => textDescription.value.length <= settings.MAX_LENGTH_DESCTIPTION;
 
-  pristine.addValidator(textDescription, checkLength, `длина комментария ${textDescription.value.length} больше 140 символов`);
+  pristine.addValidator(textDescription, checkLength, `длина комментария ${textDescription.value.length} больше ${settings.MAX_LENGTH_DESCTIPTION} символов`);
 
-  const correctHashtag = /(^#([a-zа-яё0-9]{1,19})$)/i;
+  const correctHashtag = settings.HASHTAG_CURRENT;
   hashtags.value = hashtags.value.replace(/\s+/g, ' ');
   const hashtagsArray = hashtags.value.trim().toLowerCase().split(' ');
   const checkHashtag = () => hashtagsArray.every((hashtag) => correctHashtag.test(hashtag));
-  const checkHashtagLenght = () => hashtagsArray.length < 5;
+  const checkHashtagLenght = () => hashtagsArray.length <= settings.MAX_HASHTAGS;
   const checkHashtagduplicate = () => new Set(hashtagsArray).size === hashtagsArray.length;
 
   checkHashtag();

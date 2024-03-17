@@ -10,8 +10,10 @@ const onButtonCloseUploadModal = () => {
   document.removeEventListener('keydown', onDocumentKeyDown);
   buttonCloseUploadModal.removeEventListener('click', onButtonCloseUploadModal);
   uploadFile.addEventListener('change', onButtonOpenUploadModal);
+  textDescription.value = '';
   textDescription.removeEventListener('input', onFormCheckValidation);
   uploadForm.removeEventListener('submit', onFormCheckValidation);
+  hashtags.value = '';
   hashtags.removeEventListener('input', onFormCheckValidation);
   uploadFile.value = '';
 };
