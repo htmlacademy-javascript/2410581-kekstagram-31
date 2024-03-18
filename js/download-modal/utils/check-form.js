@@ -1,40 +1,44 @@
-import {textDescription, uploadForm, hashtags} from '../variables';
+import {textDescription, uploadForm, hashtags, buttonCloseUploadModal} from '../variables';
 import {settings} from '../../settings';
+import {checkHashtag, checkHashtagLenght, checkHashtagduplicate, checkLength} from './pristine-checks';
 
-const onFormCheckValidation = (evt) => {
+const pristine = new Pristine(uploadForm, {
+  classTo: 'img-upload__field-wrapper',
+  errorClass: 'img-upload__field-wrapper--error',
+  successClass: 'img-upload__field-wrapper--valid',
+  errorTextParent: 'img-upload__field-wrapper',
+});
 
-  const pristine = new Pristine(uploadForm, {
-    classTo: 'img-upload__field-wrapper',
-    errorClass: 'img-upload__field-wrapper--error',
-    successClass: 'img-upload__field-wrapper--valid',
-    errorTextParent: 'img-upload__field-wrapper',
-  });
+pristine.addValidator(textDescription, checkLength, `длина комментария больше ${settings.MAX_LENGTH_DESCTIPTION} символов`);
 
-  const checkLength = () => textDescription.value.length <= settings.MAX_LENGTH_DESCTIPTION;
+const getHashtagsArray = () => hashtags.value.trim().toLowerCase().split(' ');
 
-  pristine.addValidator(textDescription, checkLength, `длина комментария ${textDescription.value.length} больше ${settings.MAX_LENGTH_DESCTIPTION} символов`);
+pristine.addValidator(hashtags, checkHashtag, 'Введён невалидный хэштег');
+pristine.addValidator(hashtags, checkHashtagLenght, 'Превышено количество хэштегов');
+pristine.addValidator(hashtags, checkHashtagduplicate, 'Хэштеги повторяются');
 
-  const correctHashtag = settings.HASHTAG_CURRENT;
+
+hashtags.addEventListener('input', () => {
   hashtags.value = hashtags.value.replace(/\s+/g, ' ');
-  const hashtagsArray = hashtags.value.trim().toLowerCase().split(' ');
-  const checkHashtag = () => hashtagsArray.every((hashtag) => correctHashtag.test(hashtag));
-  const checkHashtagLenght = () => hashtagsArray.length <= settings.MAX_HASHTAGS;
-  const checkHashtagduplicate = () => new Set(hashtagsArray).size === hashtagsArray.length;
-
-  checkHashtag();
-
-  if (hashtags.value) {
-    pristine.addValidator(hashtags, checkHashtag, 'Введён невалидный хэштег');
-    pristine.addValidator(hashtags, checkHashtagLenght, 'Превышено количество хэштегов');
-    pristine.addValidator(hashtags, checkHashtagduplicate, 'Хэштеги повторяются');
-  }
-
   pristine.validate();
+});
 
+textDescription.addEventListener('input', () => {
+  pristine.validate();
+});
+
+uploadForm.addEventListener('submit', (evt) => {
+  pristine.validate();
   if (!pristine.validate()) {
     evt.preventDefault();
+  } else {
+    pristine.reset();
   }
+});
 
-};
+buttonCloseUploadModal.addEventListener('click', () => {
+  pristine.reset();
+});
 
-export {onFormCheckValidation};
+
+export {pristine, getHashtagsArray};

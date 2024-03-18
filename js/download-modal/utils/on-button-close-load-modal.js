@@ -1,8 +1,8 @@
-import {buttonCloseUploadModal, uploadOverlay, uploadFile, hashtags, textDescription, uploadForm} from '../variables';
+import {buttonCloseUploadModal, uploadOverlay, uploadFile, hashtags, textDescription} from '../variables';
 import {documentBody} from '../../modal/variables';
 import {onButtonOpenUploadModal} from '..';
 import {onDocumentKeyDown} from '../../modal/utils/on-document-key-down';
-import {onFormCheckValidation} from './check-form';
+import {testEsc} from '../../modal/utils/on-document-key-down';
 
 const onButtonCloseUploadModal = () => {
   documentBody.classList.remove('modal-open');
@@ -11,11 +11,10 @@ const onButtonCloseUploadModal = () => {
   buttonCloseUploadModal.removeEventListener('click', onButtonCloseUploadModal);
   uploadFile.addEventListener('change', onButtonOpenUploadModal);
   textDescription.value = '';
-  textDescription.removeEventListener('input', onFormCheckValidation);
-  uploadForm.removeEventListener('submit', onFormCheckValidation);
   hashtags.value = '';
-  hashtags.removeEventListener('input', onFormCheckValidation);
   uploadFile.value = '';
+  textDescription.removeEventListener('keydown', testEsc);
+  hashtags.removeEventListener('keydown', testEsc);
 };
 
 export {onButtonCloseUploadModal};
