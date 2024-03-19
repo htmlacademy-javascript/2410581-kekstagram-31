@@ -12,14 +12,19 @@ const onButtonOpenUploadModal = () => {
   uploadFile.removeEventListener('change', onButtonOpenUploadModal);
 
   const file = uploadFile.files[0];
-  const reader = new FileReader();
-  reader.onloadend = () => {
-    preview.src = reader.result;
-    previews.forEach((item) => {
-      item.style.backgroundImage = `url(${reader.result})`;
-    });
-  };
-  reader.readAsDataURL(file);
+
+  if ((file.name.split('.').at(-1).toLowerCase()) === 'jpg' || (file.name.split('.').at(-1).toLowerCase()) === 'png') {
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      preview.src = reader.result;
+      previews.forEach((item) => {
+        item.style.backgroundImage = `url(${reader.result})`;
+      });
+    };
+    reader.readAsDataURL(file);
+  } else {
+    preview.src = 'img/upload-default-image.jpg';
+  }
 
   uploadForm.addEventListener('submit', onFormCheckValidate);
 };
