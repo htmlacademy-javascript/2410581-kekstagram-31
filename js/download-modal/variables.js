@@ -7,4 +7,7 @@ const previews = uploadForm.querySelectorAll('.effects__preview');
 const textDescription = uploadForm.querySelector('.text__description');
 const hashtags = uploadForm.querySelector('.text__hashtags');
 
-export {uploadFile, uploadOverlay, buttonCloseUploadModal, preview, previews, textDescription, uploadForm, hashtags};
+const scaleControls = uploadForm.querySelector('.scale');
+const scaleControlValue = document.querySelector('.scale__control--value');
+
+export {uploadFile, uploadOverlay, buttonCloseUploadModal, preview, previews, textDescription, uploadForm, hashtags, scaleControls, scaleControlValue};

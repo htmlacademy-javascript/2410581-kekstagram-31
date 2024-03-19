@@ -1,8 +1,9 @@
-import {buttonCloseUploadModal, uploadOverlay, uploadFile, hashtags, textDescription} from '../variables';
+import {buttonCloseUploadModal, uploadOverlay, uploadFile, hashtags, textDescription, scaleControls, preview} from '../variables';
 import {documentBody} from '../../modal/variables';
 import {onButtonOpenUploadModal} from '..';
 import {onDocumentKeyDown} from '../../modal/utils/on-document-key-down';
 import {pristine} from './check-form';
+import {onButtonChangeScale} from '../effects/change-scale';
 
 const onButtonCloseUploadModal = () => {
   documentBody.classList.remove('modal-open');
@@ -14,6 +15,9 @@ const onButtonCloseUploadModal = () => {
   hashtags.value = '';
   uploadFile.value = '';
   pristine.reset();
+
+  scaleControls.removeEventListener('click', onButtonChangeScale);
+  preview.style.scale = 1;
 };
 
 export {onButtonCloseUploadModal};
