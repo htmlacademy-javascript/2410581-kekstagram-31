@@ -1,8 +1,8 @@
 import {documentBody} from '../modal/variables';
-import {uploadOverlay, uploadFile, buttonCloseUploadModal, preview, previews, textDescription, hashtags} from './variables';
+import {uploadOverlay, uploadFile, buttonCloseUploadModal, preview, previews, uploadForm} from './variables';
 import {onButtonCloseUploadModal} from './utils/on-button-close-load-modal';
-import {onDocumentKeyDown, testEsc} from '../modal/utils/on-document-key-down';
-import './utils/check-form.js';
+import {onDocumentKeyDown} from '../modal/utils/on-document-key-down';
+import {onFormCheckValidate} from './utils/check-form.js';
 
 const onButtonOpenUploadModal = () => {
   documentBody.classList.add('modal-open');
@@ -10,8 +10,6 @@ const onButtonOpenUploadModal = () => {
   buttonCloseUploadModal.addEventListener('click', onButtonCloseUploadModal);
   document.addEventListener('keydown', onDocumentKeyDown);
   uploadFile.removeEventListener('change', onButtonOpenUploadModal);
-  textDescription.addEventListener('keydown', testEsc);
-  hashtags.addEventListener('keydown', testEsc);
 
   const file = uploadFile.files[0];
   const reader = new FileReader();
@@ -22,6 +20,8 @@ const onButtonOpenUploadModal = () => {
     });
   };
   reader.readAsDataURL(file);
+
+  uploadForm.addEventListener('submit', onFormCheckValidate);
 };
 
 export {onButtonOpenUploadModal};

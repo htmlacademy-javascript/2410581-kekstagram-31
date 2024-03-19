@@ -3,6 +3,7 @@ import {isEscapeKey, isFieldFocused} from './checks.js';
 import {onButtonCloseModal} from '../close-modal.js';
 import {uploadOverlay} from '../../download-modal/variables.js';
 import {onButtonCloseUploadModal} from '../../download-modal/utils/on-button-close-load-modal.js';
+import {pristine} from '../../download-modal/utils/check-form.js';
 
 const onDocumentKeyDown = (evt) => {
   if (isEscapeKey(evt)) {
@@ -10,15 +11,14 @@ const onDocumentKeyDown = (evt) => {
       bigPicture.classList.add('hidden');
       onButtonCloseModal();
     } else {
-      onButtonCloseUploadModal();
+      if (isFieldFocused()) {
+        evt.stopPropagation();
+      } else {
+        pristine.reset();
+        onButtonCloseUploadModal();
+      }
     }
   }
 };
 
-const testEsc = (e) => {
-  if (isEscapeKey(e) && isFieldFocused()) {
-    e.stopPropagation();
-  }
-};
-
-export {onDocumentKeyDown, testEsc};
+export {onDocumentKeyDown};

@@ -2,7 +2,7 @@ import {buttonCloseUploadModal, uploadOverlay, uploadFile, hashtags, textDescrip
 import {documentBody} from '../../modal/variables';
 import {onButtonOpenUploadModal} from '..';
 import {onDocumentKeyDown} from '../../modal/utils/on-document-key-down';
-import {testEsc} from '../../modal/utils/on-document-key-down';
+import {pristine} from './check-form';
 
 const onButtonCloseUploadModal = () => {
   documentBody.classList.remove('modal-open');
@@ -13,8 +13,7 @@ const onButtonCloseUploadModal = () => {
   textDescription.value = '';
   hashtags.value = '';
   uploadFile.value = '';
-  textDescription.removeEventListener('keydown', testEsc);
-  hashtags.removeEventListener('keydown', testEsc);
+  pristine.reset();
 };
 
 export {onButtonCloseUploadModal};
