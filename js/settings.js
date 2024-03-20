@@ -9,6 +9,9 @@ const settings = {
   HASHTAG_CURRENT: /(^#([a-zа-яё0-9]{1,19})$)/i,
   MAX_LENGTH_DESCTIPTION: 140,
   MAX_HASHTAGS: 5,
+  MAX_SCALE: 100,
+  MIN_SCALE: 25,
+  STEP_SCALE: 25,
 };
 
 export {settings};

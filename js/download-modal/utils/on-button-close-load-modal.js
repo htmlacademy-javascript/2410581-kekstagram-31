@@ -17,7 +17,7 @@ const onButtonCloseUploadModal = () => {
   pristine.reset();
 
   scaleControls.removeEventListener('click', onButtonChangeScale);
-  preview.style.scale = 1;
+  preview.style.removeProperty('scale');
 };
 
 export {onButtonCloseUploadModal};

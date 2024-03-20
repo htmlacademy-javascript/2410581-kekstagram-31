@@ -29,6 +29,12 @@ const onButtonOpenUploadModal = () => {
   uploadForm.addEventListener('submit', onFormCheckValidate);
 
   scaleControls.addEventListener('click', onButtonChangeScale);
+
+  // const effectList = document.querySelector('.effects__list');
+
+  // effectList.addEventListener('change', (evt) => {
+  //   console.log(evt.target.id === 'effect-sepia');
+  // });
 };
 
 export {onButtonOpenUploadModal};
