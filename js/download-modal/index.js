@@ -1,9 +1,13 @@
 import {documentBody} from '../modal/variables';
-import {uploadOverlay, uploadFile, buttonCloseUploadModal, preview, previews, uploadForm, scaleControls} from './variables';
+import {uploadOverlay, uploadFile, buttonCloseUploadModal, preview, previews, uploadForm, scaleControls, sliderContainer, effectList} from './variables';
 import {onButtonCloseUploadModal} from './utils/on-button-close-load-modal';
 import {onDocumentKeyDown} from '../modal/utils/on-document-key-down';
 import {onFormCheckValidate} from './utils/check-form.js';
 import {onButtonChangeScale} from './effects/change-scale.js';
+import {getNoUiSlider} from './effects/get-no-ui-slider.js';
+import {onPreviewChangeStyle} from './effects/utils/on-preview-change-style.js';
+
+getNoUiSlider();
 
 const onButtonOpenUploadModal = () => {
   documentBody.classList.add('modal-open');
@@ -30,11 +34,8 @@ const onButtonOpenUploadModal = () => {
 
   scaleControls.addEventListener('click', onButtonChangeScale);
 
-  // const effectList = document.querySelector('.effects__list');
-
-  // effectList.addEventListener('change', (evt) => {
-  //   console.log(evt.target.id === 'effect-sepia');
-  // });
+  sliderContainer.classList.add('hidden');
+  effectList.addEventListener('change', onPreviewChangeStyle);
 };
 
 export {onButtonOpenUploadModal};
