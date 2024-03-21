@@ -14,4 +14,32 @@ const settings = {
   STEP_SCALE: 25,
 };
 
-export {settings};
+const filters = {
+  'effect-chrome': {
+    change: [0, 1, 0.1],
+    styleProperty: 'grayscale',
+    valueProperty: '',
+  },
+  'effect-sepia': {
+    change: [0, 1, 0.1],
+    styleProperty: 'sepia',
+    valueProperty: '',
+  },
+  'effect-marvin': {
+    change: [0, 100, 1],
+    styleProperty: 'invert',
+    valueProperty: '%',
+  },
+  'effect-phobos': {
+    change: [0, 3, 0.1],
+    styleProperty: 'blur',
+    valueProperty: 'px',
+  },
+  'effect-heat': {
+    change: [1, 3, 0.1],
+    styleProperty: 'brightness',
+    valueProperty: '',
+  },
+};
+
+export {settings, filters};
