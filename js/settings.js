@@ -9,6 +9,37 @@ const settings = {
   HASHTAG_CURRENT: /(^#([a-zа-яё0-9]{1,19})$)/i,
   MAX_LENGTH_DESCTIPTION: 140,
   MAX_HASHTAGS: 5,
+  MAX_SCALE: 100,
+  MIN_SCALE: 25,
+  STEP_SCALE: 25,
 };
 
-export {settings};
+const filters = {
+  'effect-chrome': {
+    sliderValues: [0, 1, 0.1],
+    styleProperty: 'grayscale',
+    valueProperty: '',
+  },
+  'effect-sepia': {
+    sliderValues: [0, 1, 0.1],
+    styleProperty: 'sepia',
+    valueProperty: '',
+  },
+  'effect-marvin': {
+    sliderValues: [0, 100, 1],
+    styleProperty: 'invert',
+    valueProperty: '%',
+  },
+  'effect-phobos': {
+    sliderValues: [0, 3, 0.1],
+    styleProperty: 'blur',
+    valueProperty: 'px',
+  },
+  'effect-heat': {
+    sliderValues: [1, 3, 0.1],
+    styleProperty: 'brightness',
+    valueProperty: '',
+  },
+};
+
+export {settings, filters};
