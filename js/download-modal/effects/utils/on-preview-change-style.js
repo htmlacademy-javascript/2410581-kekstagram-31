@@ -14,10 +14,11 @@ const onPreviewChangeStyle = (evt) => {
   const currentEffect = evt.target.id;
 
   if ([currentEffect] in filters) {
-    const sliderValues = filters[currentEffect].change;
+    const effectSetting = filters[currentEffect];
+    const sliderValues = effectSetting.sliderValues;
     changeSlider(sliderValues[0], sliderValues[1], sliderValues[2]);
-    styleProperty = filters[currentEffect].styleProperty;
-    valueProperty = filters[currentEffect].valueProperty;
+    styleProperty = effectSetting.styleProperty;
+    valueProperty = effectSetting.valueProperty;
     changeStyle();
   }
   if (currentEffect === 'effect-none') {
