@@ -1,14 +1,19 @@
-import {picturesList} from './variables';
+import {picturesList} from './variables.js';
 import {fillModal} from './utils/fill-photo-modal.js';
 import {onPhotoOpenModal} from './open-modal.js';
 import {isEnterKey} from './utils/checks.js';
 import {uploadFile} from '../download-modal/variables.js';
 import {onButtonOpenUploadModal} from '../download-modal/index.js';
+import {getData} from '../api/get-data.js';
 
 const makeEventClick = () => {
+  getData();
   picturesList.addEventListener('click', (evt) => {
-    if (evt.target.className === 'picture__img') {
-      fillModal(evt);
+    const currentPicture = evt.target.closest('.picture');
+
+    if (currentPicture) {
+      evt.preventDefault();
+      fillModal(currentPicture.dataset.pictureId);
       onPhotoOpenModal();
     }
   });

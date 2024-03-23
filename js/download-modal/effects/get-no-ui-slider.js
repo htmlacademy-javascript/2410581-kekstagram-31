@@ -1,15 +1,15 @@
-import {preview, sliderValue, rangeSlider} from '../variables';
-import {changeStyle} from './utils/change-style';
-import {valueProperty, styleProperty} from './utils/on-preview-change-style';
+import {preview, sliderValue, rangeSlider} from '../variables.js';
+import {changeStyle} from './utils/change-style.js';
+import {valueProperty, styleProperty} from './utils/on-preview-change-style.js';
 
 const getNoUiSlider = () => {
   noUiSlider.create(rangeSlider, {
     range: {
       min: 0,
-      max: 3
+      max: 0
     },
-    start: 3,
-    step: 0.1,
+    start: 0,
+    step: 0,
     connect: 'lower',
     format: {
       to: (value) => Number.isInteger(value) ? value.toFixed(0) : value.toFixed(1),

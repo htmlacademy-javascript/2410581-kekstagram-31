@@ -1,6 +1,6 @@
-import {textDescription, uploadForm, hashtags} from '../variables';
-import {settings} from '../../settings';
-import {checkHashtag, checkHashtagLenght, checkHashtagduplicate, checkLength} from './pristine-checks';
+import {textDescription, uploadForm, hashtags} from '../variables.js';
+import {settings} from '../../settings.js';
+import {checkHashtag, checkHashtagLenght, checkHashtagduplicate, checkLength} from './pristine-checks.js';
 
 const pristine = new Pristine(uploadForm, {
   classTo: 'img-upload__field-wrapper',

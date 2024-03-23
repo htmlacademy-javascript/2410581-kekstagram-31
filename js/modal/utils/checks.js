@@ -1,4 +1,4 @@
-import {hashtags, textDescription} from '../../download-modal/variables';
+import {hashtags, textDescription} from '../../download-modal/variables.js';
 
 const isEscapeKey = (evt) => evt.key === 'Escape';
 const isEnterKey = (evt) => evt.key === 'Enter';
