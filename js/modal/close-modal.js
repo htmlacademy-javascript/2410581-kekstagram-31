@@ -1,4 +1,4 @@
-import {bigPicture, commentsCount, commentLoader, documentBody, buttonClose, showMoreButton} from './variables.js';
+import {bigPicture, commentsCount, commentLoader, documentBody, buttonClose, showMoreButton, numberOfComments, commentsTotalCount, socialCommentsList} from './variables.js';
 import {onDocumentKeyDown} from './utils/on-document-key-down.js';
 import {onButtonAddComments} from './utils/on-button-add-comments.js';
 
@@ -10,6 +10,9 @@ const onButtonCloseModal = () => {
   buttonClose.removeEventListener('click', onButtonCloseModal);
   document.removeEventListener('keydown', onDocumentKeyDown);
   showMoreButton.removeEventListener('click', onButtonAddComments);
+  numberOfComments.textContent = 'Загрузка...';
+  commentsTotalCount.textContent = 'Загрузка...';
+  socialCommentsList.innerHTML = 'Загрузка...';
 };
 
 export {onButtonCloseModal};

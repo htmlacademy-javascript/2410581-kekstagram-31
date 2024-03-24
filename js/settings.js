@@ -12,6 +12,11 @@ const settings = {
   MAX_SCALE: 100,
   MIN_SCALE: 25,
   STEP_SCALE: 25,
+  ALERT_SHOW_TIME: 5000,
+  GET_DATA_LINK: 'https://31.javascript.htmlacademy.pro/kekstagram/data',
+  SEND_DATA_LINK: 'https://31.javascript.htmlacademy.pro/kekstagram',
+  IDLE: 'Опубликовать',
+  SENDING: 'Публикую...',
 };
 
 const filters = {

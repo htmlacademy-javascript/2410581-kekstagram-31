@@ -1,4 +1,4 @@
-import {buttonCloseUploadModal, uploadOverlay, uploadFile, hashtags, textDescription, scaleControls, preview, effectList, sliderContainer} from '../variables.js';
+import {buttonCloseUploadModal, uploadOverlay, uploadFile, hashtags, textDescription, scaleControls, preview, effectList, sliderContainer, scaleControlValue, sliderValue, effectNone} from '../variables.js';
 import {documentBody} from '../../modal/variables.js';
 import {onButtonOpenUploadModal} from '..';
 import {onDocumentKeyDown} from '../../modal/utils/on-document-key-down.js';
@@ -12,9 +12,12 @@ const onButtonCloseUploadModal = () => {
   document.removeEventListener('keydown', onDocumentKeyDown);
   buttonCloseUploadModal.removeEventListener('click', onButtonCloseUploadModal);
   uploadFile.addEventListener('change', onButtonOpenUploadModal);
+  scaleControlValue.value = '100%';
   textDescription.value = '';
   hashtags.value = '';
   uploadFile.value = '';
+  sliderValue.value = '';
+  effectNone.checked = true;
   pristine.reset();
 
   scaleControls.removeEventListener('click', onButtonChangeScale);

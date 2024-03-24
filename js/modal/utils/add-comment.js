@@ -3,7 +3,7 @@ import {settings} from '../../settings.js';
 import {makeElements} from './make-element.js';
 import {onButtonAddComments} from './on-button-add-comments';
 
-const addComent = (commentsArray) => {
+const addComment = (commentsArray) => {
   let comments = bigPicture.querySelectorAll('.social__comment');
 
   for (let i = comments.length; i < settings.MAX_STARTING_COMMENTS + comments.length; i++) {
@@ -20,4 +20,4 @@ const addComent = (commentsArray) => {
   }
 };
 
-export {addComent};
+export {addComment};

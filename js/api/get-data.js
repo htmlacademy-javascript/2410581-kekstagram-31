@@ -1,9 +1,14 @@
 import {getAllPosts} from '../get-all-post.js';
+import {getDataError} from './errors/get-data-error.js';
+import {settings} from '../settings.js';
 
 const getData = () => {
-  fetch('https://31.javascript.htmlacademy.pro/kekstagram/data')
+  fetch(settings.GET_DATA_LINK)
     .then((response) => response.json())
-    .then((posts) => getAllPosts(posts));
+    .then((posts) => getAllPosts(posts))
+    .catch(() => {
+      getDataError();
+    });
 };
 
 export {getData};
