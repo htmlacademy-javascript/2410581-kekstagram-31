@@ -1,7 +1,7 @@
 import {textDescription, uploadForm, hashtags} from '../variables.js';
 import {settings} from '../../settings.js';
 import {checkHashtag, checkHashtagLenght, checkHashtagduplicate, checkLength} from './pristine-checks.js';
-import {sendUploadData} from '../../api/errors/send-upload-data.js';
+import {sendUploadData} from '../../api/send-upload-data.js';
 
 const pristine = new Pristine(uploadForm, {
   classTo: 'img-upload__field-wrapper',

@@ -1,9 +1,9 @@
-import {onButtonCloseUploadModal} from '../../download-modal/utils/on-button-close-load-modal';
-import {settings} from '../../settings.js';
-import {uploadMessageError, uploadMessageSuccess} from '../variables.js';
-import {getUploadMessage} from './get-upload-message.js';
-import {blockSubmitButton} from './utils/block-submit-button.js';
-import { unblockSubmitButton } from './utils/unblock-submit-button.js';
+import {onButtonCloseUploadModal} from '../download-modal/utils/on-button-close-load-modal.js';
+import {settings} from '../settings.js';
+import {uploadMessageError, uploadMessageSuccess} from '../errors/variables.js';
+import {getUploadMessage} from '../errors/get-upload-message.js';
+import {blockSubmitButton} from '../errors/utils/block-submit-button.js';
+import { unblockSubmitButton } from '../errors/utils/unblock-submit-button.js';
 
 const sendUploadData = (evt) => {
   const formData = new FormData(evt.target);

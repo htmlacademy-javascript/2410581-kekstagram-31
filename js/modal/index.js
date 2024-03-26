@@ -4,10 +4,8 @@ import {onPhotoOpenModal} from './open-modal.js';
 import {isEnterKey} from './utils/checks.js';
 import {uploadFile} from '../download-modal/variables.js';
 import {onButtonOpenUploadModal} from '../download-modal/index.js';
-import {getData} from '../api/get-data.js';
 
 const makeEventClick = () => {
-  getData();
   picturesList.addEventListener('click', (evt) => {
     const currentPicture = evt.target.closest('.picture');
 

@@ -1,6 +1,6 @@
-import {documentBody} from '../../../modal/variables.js';
-import {onDocumentKeyDown} from '../../../modal/utils/on-document-key-down';
-import {uploadMessageError, uploadMessageSuccess} from '../../variables';
+import {documentBody} from '../../modal/variables.js';
+import {onDocumentKeyDown} from '../../modal/utils/on-document-key-down.js';
+import {uploadMessageError, uploadMessageSuccess} from '../variables.js';
 
 const onButtonCloseMessage = (evt) => {
   const buttonSuccessClose = document.querySelector('.success');

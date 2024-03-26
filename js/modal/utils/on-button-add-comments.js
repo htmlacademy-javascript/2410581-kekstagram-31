@@ -1,9 +1,10 @@
 import {idPhoto} from './fill-photo-modal.js';
-import {getCommentData} from '../../api/get-comment-data.js';
 import {addComment} from './add-comment.js';
+import { getData } from '../../api/get-data.js';
 
 const onButtonAddComments = () => {
-  getCommentData(idPhoto, addComment);
+  getData()
+    .then((posts) => addComment(posts[idPhoto].comments));
 };
 
 export {onButtonAddComments};

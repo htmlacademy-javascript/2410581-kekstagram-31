@@ -1,5 +1,5 @@
-import {settings} from '../../../settings';
-import {submitButton} from '../../variables';
+import {settings} from '../../settings';
+import {submitButton} from '../variables';
 
 const unblockSubmitButton = () => {
   submitButton.disabled = false;

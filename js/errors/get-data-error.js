@@ -1,6 +1,6 @@
-import {errorAllPosts} from '../variables.js';
-import {documentBody} from '../../modal/variables';
-import {settings} from '../../settings';
+import {errorAllPosts} from './variables.js';
+import {documentBody} from '../modal/variables.js';
+import {settings} from '../settings.js';
 
 const getDataError = () => {
   documentBody.append(errorAllPosts);

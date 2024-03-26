@@ -4,7 +4,7 @@ import {onButtonCloseModal} from '../close-modal.js';
 import {uploadOverlay} from '../../download-modal/variables.js';
 import {onButtonCloseUploadModal} from '../../download-modal/utils/on-button-close-load-modal.js';
 import {pristine} from '../../download-modal/utils/check-form.js';
-import {onButtonCloseMessage} from '../../api/errors/get-upload-message.js';
+import {onButtonCloseMessage} from '../../errors/get-upload-message.js';
 
 const onDocumentKeyDown = (evt) => {
   if (isEscapeKey(evt)) {

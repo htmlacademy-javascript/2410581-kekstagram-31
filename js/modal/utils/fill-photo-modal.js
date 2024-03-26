@@ -1,7 +1,7 @@
 import {commentsGeneration} from './comments-generation.js';
 import {bigImg, likes, description} from '../variables.js';
 import {changeCommentCount} from './change-comment-count.js';
-import {getCommentData} from '../../api/get-comment-data.js';
+import { getData } from '../../api/get-data.js';
 
 let idPhoto;
 
@@ -12,11 +12,14 @@ export const fillModal = (photoId) => {
   const currentLikes = currentPhoto.querySelector('.picture__likes');
   idPhoto = photoId;
 
-  getCommentData(photoId, commentsGeneration);
+  getData()
+    .then((posts) => {
+      commentsGeneration(posts[photoId].comments);
+      changeCommentCount(posts[photoId].comments);
+    });
   bigImg.src = currentImg.src;
   description.textContent = currentImg.alt;
   likes.textContent = currentLikes.textContent;
-  getCommentData(photoId, changeCommentCount);
 };
 
 export {idPhoto};
