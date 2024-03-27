@@ -1,5 +1,12 @@
-import {addAllPictures} from './photo-generation.js';
+import { getDataError } from './errors/get-data-error.js';
+import { getData } from './api/get-data.js';
+import { getAllPosts } from './get-all-post.js';
 import {makeEventClick} from './modal/index.js';
 
-addAllPictures();
-makeEventClick();
+getData()
+  .then((posts) => {
+    getAllPosts(posts);
+    makeEventClick(posts);
+  })
+  .catch(() => getDataError());
+

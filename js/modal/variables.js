@@ -8,5 +8,8 @@ const commentsTotalCount = commentsCount.querySelector('.social__comment-total-c
 const numberOfComments = commentsCount.querySelector('.social__comment-shown-count');
 const commentLoader = bigPicture.querySelector('.comments-loader');
 const documentBody = document.querySelector('body');
+const bigImg = bigPicture.querySelector('.big-picture__img img');
+const likes = bigPicture.querySelector('.likes-count');
+const description = bigPicture.querySelector('.social__caption');
 
-export {picturesList, bigPicture, buttonClose, commentLoader, commentsCount, documentBody, showMoreButton, socialCommentsList, commentsTotalCount, numberOfComments};
+export {picturesList, bigPicture, buttonClose, commentLoader, commentsCount, documentBody, showMoreButton, socialCommentsList, commentsTotalCount, numberOfComments, bigImg, likes, description};

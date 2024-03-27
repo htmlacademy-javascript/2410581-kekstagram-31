@@ -14,5 +14,6 @@ const sliderValue = uploadForm.querySelector('.effect-level__value');
 const rangeSlider = uploadForm.querySelector('.effect-level__slider');
 const sliderContainer = uploadForm.querySelector('.img-upload__effect-level');
 const effectList = uploadForm.querySelector('.effects__list');
+const effectNone = document.querySelector('#effect-none');
 
-export {uploadFile, uploadOverlay, buttonCloseUploadModal, preview, previews, textDescription, uploadForm, hashtags, scaleControls, scaleControlValue, sliderValue, rangeSlider, sliderContainer, effectList};
+export {uploadFile, uploadOverlay, buttonCloseUploadModal, preview, previews, textDescription, uploadForm, hashtags, scaleControls, scaleControlValue, sliderValue, rangeSlider, sliderContainer, effectList, effectNone};

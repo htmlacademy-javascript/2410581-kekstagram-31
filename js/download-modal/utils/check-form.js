@@ -1,6 +1,7 @@
-import {textDescription, uploadForm, hashtags} from '../variables';
-import {settings} from '../../settings';
-import {checkHashtag, checkHashtagLenght, checkHashtagduplicate, checkLength} from './pristine-checks';
+import {textDescription, uploadForm, hashtags} from '../variables.js';
+import {settings} from '../../settings.js';
+import {checkHashtag, checkHashtagLenght, checkHashtagduplicate, checkLength} from './pristine-checks.js';
+import {sendUploadData} from '../../api/send-upload-data.js';
 
 const pristine = new Pristine(uploadForm, {
   classTo: 'img-upload__field-wrapper',
@@ -14,6 +15,11 @@ pristine.addValidator(hashtags, checkHashtag, 'Введён невалидный
 pristine.addValidator(hashtags, checkHashtagLenght, 'Превышено количество хэштегов');
 pristine.addValidator(hashtags, checkHashtagduplicate, 'Хэштеги повторяются');
 
-const onFormCheckValidate = (evt) => !pristine.validate() ? evt.preventDefault() : pristine.reset();
+const onFormCheckValidate = (evt) => {
+  evt.preventDefault();
+  if (pristine.validate()) {
+    sendUploadData(evt);
+  }
+};
 
 export {onFormCheckValidate, pristine};

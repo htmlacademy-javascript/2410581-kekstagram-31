@@ -1,16 +1,16 @@
-import {showMoreButton, socialCommentsList, bigPicture, commentsTotalCount, numberOfComments} from '../variables';
-import {settings} from '../../settings';
-import {currentPhoto} from './fill-photo-modal';
-import {makeElements} from './make-element';
+import {bigPicture, socialCommentsList, numberOfComments, showMoreButton, commentsTotalCount} from '../variables.js';
+import {settings} from '../../settings.js';
+import {makeElements} from './make-element.js';
+import { onButtonAddComments } from '../open-modal.js';
 
-const onButtonAddComments = () => {
+const addComment = (commentsArray) => {
   let comments = bigPicture.querySelectorAll('.social__comment');
 
   for (let i = comments.length; i < settings.MAX_STARTING_COMMENTS + comments.length; i++) {
-    if (typeof currentPhoto.comments[i] === 'undefined') {
+    if (typeof commentsArray[i] === 'undefined') {
       break;
     }
-    socialCommentsList.append(makeElements(currentPhoto.comments[i]));
+    socialCommentsList.append(makeElements(commentsArray[i]));
     numberOfComments.textContent = +numberOfComments.textContent + 1;
   }
   comments = bigPicture.querySelectorAll('.social__comment');
@@ -20,4 +20,4 @@ const onButtonAddComments = () => {
   }
 };
 
-export {onButtonAddComments};
+export {addComment};

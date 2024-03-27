@@ -1,10 +1,10 @@
-import {buttonCloseUploadModal, uploadOverlay, uploadFile, hashtags, textDescription, scaleControls, preview, effectList, sliderContainer} from '../variables';
-import {documentBody} from '../../modal/variables';
+import {buttonCloseUploadModal, uploadOverlay, uploadFile, hashtags, textDescription, scaleControls, preview, effectList, sliderContainer, scaleControlValue, sliderValue, effectNone} from '../variables.js';
+import {documentBody} from '../../modal/variables.js';
 import {onButtonOpenUploadModal} from '..';
-import {onDocumentKeyDown} from '../../modal/utils/on-document-key-down';
-import {pristine} from './check-form';
-import {onButtonChangeScale} from '../effects/change-scale';
-import {onPreviewChangeStyle} from '../effects/utils/on-preview-change-style';
+import {onDocumentKeyDown} from '../../modal/utils/on-document-key-down.js';
+import {pristine} from './check-form.js';
+import {onButtonChangeScale} from '../effects/change-scale.js';
+import {onPreviewChangeStyle} from '../effects/utils/on-preview-change-style.js';
 
 const onButtonCloseUploadModal = () => {
   documentBody.classList.remove('modal-open');
@@ -12,9 +12,12 @@ const onButtonCloseUploadModal = () => {
   document.removeEventListener('keydown', onDocumentKeyDown);
   buttonCloseUploadModal.removeEventListener('click', onButtonCloseUploadModal);
   uploadFile.addEventListener('change', onButtonOpenUploadModal);
+  scaleControlValue.value = '100%';
   textDescription.value = '';
   hashtags.value = '';
   uploadFile.value = '';
+  sliderValue.value = '';
+  effectNone.checked = true;
   pristine.reset();
 
   scaleControls.removeEventListener('click', onButtonChangeScale);
