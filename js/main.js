@@ -4,6 +4,9 @@ import { getAllPosts } from './get-all-post.js';
 import {makeEventClick} from './modal/index.js';
 
 getData()
-  .then((posts) => getAllPosts(posts))
+  .then((posts) => {
+    getAllPosts(posts);
+    makeEventClick(posts);
+  })
   .catch(() => getDataError());
-makeEventClick();
+

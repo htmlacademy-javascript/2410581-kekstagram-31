@@ -2,16 +2,21 @@ import {bigPicture, documentBody, buttonClose} from './variables.js';
 import {onButtonCloseModal} from './close-modal.js';
 import {onDocumentKeyDown} from './utils/on-document-key-down.js';
 import {showMoreComments} from './show-more-comments.js';
-import {idPhoto} from './utils/fill-photo-modal.js';
-import { getData } from '../api/get-data.js';
+import {addComment} from './utils/add-comment.js';
 
-const onPhotoOpenModal = () => {
+let comments;
+
+const onButtonAddComments = () => {
+  addComment(comments);
+};
+
+const onPhotoOpenModal = (posts, currentId) => {
   bigPicture.classList.remove('hidden');
   documentBody.classList.add('modal-open');
   buttonClose.addEventListener('click', onButtonCloseModal);
   document.addEventListener('keydown', onDocumentKeyDown);
-  getData()
-    .then((posts) => showMoreComments(posts[idPhoto].comments));
+  showMoreComments(posts[currentId].comments);
+  comments = posts[currentId].comments;
 };
 
-export {onPhotoOpenModal};
+export {onPhotoOpenModal, onButtonAddComments};

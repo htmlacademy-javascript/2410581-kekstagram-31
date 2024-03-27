@@ -1,7 +1,7 @@
 import {bigPicture, socialCommentsList, numberOfComments, showMoreButton, commentsTotalCount} from '../variables.js';
 import {settings} from '../../settings.js';
 import {makeElements} from './make-element.js';
-import {onButtonAddComments} from './on-button-add-comments';
+import { onButtonAddComments } from '../open-modal.js';
 
 const addComment = (commentsArray) => {
   let comments = bigPicture.querySelectorAll('.social__comment');

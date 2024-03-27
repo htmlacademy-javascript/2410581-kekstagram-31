@@ -5,22 +5,26 @@ import {isEnterKey} from './utils/checks.js';
 import {uploadFile} from '../download-modal/variables.js';
 import {onButtonOpenUploadModal} from '../download-modal/index.js';
 
-const makeEventClick = () => {
+const makeEventClick = (posts) => {
   picturesList.addEventListener('click', (evt) => {
     const currentPicture = evt.target.closest('.picture');
 
     if (currentPicture) {
+      const currentId = currentPicture.dataset.pictureId;
       evt.preventDefault();
-      fillModal(currentPicture.dataset.pictureId);
-      onPhotoOpenModal();
+      fillModal(posts, currentId);
+      onPhotoOpenModal(posts, currentId);
     }
   });
 
   picturesList.addEventListener('keydown', (evt) => {
     if (isEnterKey(evt)) {
+      const currentPicture = evt.target.closest('.picture');
+
       if (evt.target.className === 'picture') {
-        fillModal(evt);
-        onPhotoOpenModal();
+        const currentId = currentPicture.dataset.pictureId;
+        fillModal(posts, currentId);
+        onPhotoOpenModal(posts, currentId);
       }
     }
   });

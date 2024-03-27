@@ -8,18 +8,19 @@ import {onButtonCloseMessage} from '../../errors/get-upload-message.js';
 
 const onDocumentKeyDown = (evt) => {
   if (isEscapeKey(evt)) {
-    if (document.querySelector('.success')) {
-      const buttonSuccessClose = document.querySelector('.success');
+    const buttonSuccessClose = document.querySelector('.success');
+    const buttonErrorClose = document.querySelector('.error');
+
+    if (buttonSuccessClose) {
       buttonSuccessClose.removeEventListener('click', onButtonCloseMessage);
-      document.querySelector('.success').remove();
+      buttonSuccessClose.remove();
     }
-    if (document.querySelector('.error')) {
+    if (buttonErrorClose) {
       evt.stopPropagation();
-      const buttonErrorClose = document.querySelector('.error');
       buttonErrorClose.removeEventListener('click', onButtonCloseMessage);
-      document.querySelector('.error').remove();
+      buttonErrorClose.remove();
     } else {
-      if (uploadOverlay.classList.contains('hidden') && !(document.querySelector('.error'))) {
+      if (uploadOverlay.classList.contains('hidden') && !(buttonErrorClose)) {
         bigPicture.classList.add('hidden');
         onButtonCloseModal();
       } else {
