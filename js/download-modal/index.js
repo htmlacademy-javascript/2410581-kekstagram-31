@@ -16,6 +16,8 @@ const onButtonOpenUploadModal = () => {
   document.addEventListener('keydown', onDocumentKeyDown);
   uploadFile.removeEventListener('change', onButtonOpenUploadModal);
 
+  sliderContainer.classList.add('hidden');
+
   const file = uploadFile.files[0];
   if ((file.name.split('.').at(-1).toLowerCase()) === 'jpg' || (file.name.split('.').at(-1).toLowerCase()) === 'png') {
     const reader = new FileReader();
@@ -34,7 +36,7 @@ const onButtonOpenUploadModal = () => {
 
   scaleControls.addEventListener('click', onButtonChangeScale);
 
-  sliderContainer.classList.add('hidden');
+
   effectList.addEventListener('change', onPreviewChangeStyle);
 };
 

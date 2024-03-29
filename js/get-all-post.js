@@ -1,7 +1,10 @@
+import { picturesList } from './modal/variables.js';
 import {picturesConteiner, templatePicture} from './variables.js';
 
 const getAllPosts = (posts) => {
   const similarListFragment = document.createDocumentFragment();
+  const pictures = picturesList.querySelectorAll('.picture');
+  pictures.forEach((item) => item.remove());
 
   posts.forEach(({id, url, description, comments, likes}) => {
     const similarListElement = templatePicture.cloneNode(true);

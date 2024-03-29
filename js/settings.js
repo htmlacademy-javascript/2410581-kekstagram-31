@@ -13,6 +13,8 @@ const settings = {
   MIN_SCALE: 25,
   STEP_SCALE: 25,
   ALERT_SHOW_TIME: 5000,
+  MAX_RANDOM_POSTS: 10,
+  DEBOUNCE_DELAY: 500,
   GET_DATA_LINK: 'https://31.javascript.htmlacademy.pro/kekstagram/data',
   SEND_DATA_LINK: 'https://31.javascript.htmlacademy.pro/kekstagram',
   IDLE: 'Опубликовать',
