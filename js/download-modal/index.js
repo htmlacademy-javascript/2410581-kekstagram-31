@@ -20,14 +20,10 @@ const onButtonOpenUploadModal = () => {
 
   const file = uploadFile.files[0];
   if ((file.name.split('.').at(-1).toLowerCase()) === 'jpg' || (file.name.split('.').at(-1).toLowerCase()) === 'png') {
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      preview.src = reader.result;
-      previews.forEach((item) => {
-        item.style.backgroundImage = `url(${reader.result})`;
-      });
-    };
-    reader.readAsDataURL(file);
+    preview.src = URL.createObjectURL(file);
+    previews.forEach((item) => {
+      item.style.backgroundImage = `url(${URL.createObjectURL(file)})`;
+    });
   } else {
     preview.src = 'img/upload-default-image.jpg';
   }

@@ -16,7 +16,7 @@ const settings = {
   MAX_RANDOM_POSTS: 10,
   DEBOUNCE_DELAY: 500,
   GET_DATA_LINK: 'https://31.javascript.htmlacademy.pro/kekstagram/data',
-  SEND_DATA_LINK: 'https://31.javascript.htmlacademy.pro/kekstagram',
+  SEND_DATA_LINK: 'https://31.javascript.htmlacademy.pro/kekstagram/',
   IDLE: 'Опубликовать',
   SENDING: 'Публикую...',
 };

@@ -21,7 +21,7 @@ const onButtonCloseUploadModal = () => {
   pristine.reset();
 
   scaleControls.removeEventListener('click', onButtonChangeScale);
-  preview.style.removeProperty('scale');
+  preview.style.removeProperty('transform');
 
   preview.style.removeProperty('filter');
   sliderContainer.classList.add('hidden');
