@@ -1,11 +1,10 @@
 import {getDataError} from './errors/get-data-error.js';
 import {getData} from './api/get-data.js';
-import {getAllPosts} from './get-all-post.js';
-import {makeEventClick} from './modal/index.js';
+import {getAllPosts} from './utils/get-all-post.js';
+import {makeEventClick} from './modal/utils/make-event-click.js';
 import {getArray} from './filters/index.js';
-import {filterButtons} from './filters/variables.js';
-import { uploadFile } from './download-modal/variables.js';
-import { onButtonOpenUploadModal } from './download-modal/index.js';
+import {onButtonOpenUploadModal} from './modal/index.js';
+import {filterButtons, uploadFile} from './variables.js';
 
 uploadFile.addEventListener('change', onButtonOpenUploadModal);
 

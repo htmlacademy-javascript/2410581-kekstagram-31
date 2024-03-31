@@ -1,5 +1,5 @@
 import {settings} from '../../settings.js';
-import {hashtags} from '../variables.js';
+import { hashtags } from '../../variables.js';
 
 const correctHashtag = settings.HASHTAG_CURRENT;
 const getHashtagsArray = (flag = false) => flag ? hashtags.value.trim().toLowerCase().split(' ') : hashtags.value.trim().split(' ') ;

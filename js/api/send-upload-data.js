@@ -1,9 +1,9 @@
-import {onButtonCloseUploadModal} from '../download-modal/utils/on-button-close-load-modal.js';
 import {settings} from '../settings.js';
-import {uploadMessageError, uploadMessageSuccess} from '../errors/variables.js';
 import {getUploadMessage} from '../errors/get-upload-message.js';
 import {blockSubmitButton} from '../errors/utils/block-submit-button.js';
-import { unblockSubmitButton } from '../errors/utils/unblock-submit-button.js';
+import {unblockSubmitButton} from '../errors/utils/unblock-submit-button.js';
+import {onButtonCloseUploadModal} from '../modal/index.js';
+import {templateMessageError, templateMessageSuccess} from '../variables.js';
 
 const sendUploadData = (evt) => {
   const formData = new FormData(evt.target);
@@ -18,13 +18,13 @@ const sendUploadData = (evt) => {
     .then((response) => {
       if (response.ok) {
         onButtonCloseUploadModal();
-        getUploadMessage(uploadMessageSuccess, '.success');
+        getUploadMessage(templateMessageSuccess, '.success');
       } else {
-        getUploadMessage(uploadMessageError, '.error');
+        getUploadMessage(templateMessageError, '.error');
       }
     })
     .catch(() => {
-      getUploadMessage(uploadMessageError, '.error');
+      getUploadMessage(templateMessageError, '.error');
     })
     .finally(unblockSubmitButton);
 };

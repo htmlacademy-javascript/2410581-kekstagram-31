@@ -1,6 +1,6 @@
 import {commentsGeneration} from './comments-generation.js';
-import {bigImg, likes, description} from '../variables.js';
 import {changeCommentCount} from './change-comment-count.js';
+import { bigImg, description, likes } from '../../variables.js';
 
 export const fillModal = (posts, photoId) => {
   const photos = document.querySelectorAll('.picture');

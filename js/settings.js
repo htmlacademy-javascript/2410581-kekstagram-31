@@ -1,3 +1,5 @@
+// Основные настройки
+
 const settings = {
   MAX_USERS: 25,
   MIN_OF_LIKES: 15,
@@ -19,9 +21,12 @@ const settings = {
   SEND_DATA_LINK: 'https://31.javascript.htmlacademy.pro/kekstagram/',
   IDLE: 'Опубликовать',
   SENDING: 'Публикую...',
+  FILE_TYPES: ['jpg', 'jpeg', 'png', 'gif'],
 };
 
-const filters = {
+// Настройки слайдера
+
+const sliders = {
   'effect-chrome': {
     sliderValues: [0, 1, 0.1],
     styleProperty: 'grayscale',
@@ -49,4 +54,4 @@ const filters = {
   },
 };
 
-export {settings, filters};
+export {settings, sliders};

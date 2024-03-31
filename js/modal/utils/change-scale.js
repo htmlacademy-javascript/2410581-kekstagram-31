@@ -1,5 +1,5 @@
-import {scaleControlValue, preview} from '../variables.js';
 import {settings} from '../../settings.js';
+import { preview, scaleControlValue } from '../../variables.js';
 
 const onButtonChangeScale = (evt) => {
   if (evt.target.className === 'scale__control  scale__control--smaller' && parseInt(scaleControlValue.value, 10) !== settings.MIN_SCALE) {

@@ -1,8 +1,8 @@
-import {getAllPosts} from '../get-all-post.js';
-import {debounce} from './utils/debounce.js';
+import {getAllPosts} from '../utils/get-all-post.js';
 import {checkCurrentButton} from './utils/check-current-button.js';
 import {settings} from '../settings.js';
-import {filterButtons} from './variables.js';
+import { filterButtons } from '../variables.js';
+import { debounce } from '../utils/debounce.js';
 
 let postsArray;
 const debounceRandorPosts = debounce(getAllPosts, settings.DEBOUNCE_DELAY);
@@ -18,7 +18,6 @@ const onButtonChangePosts = (evt) => {
     debounceRandorPosts(checkCurrentButton(currentButton, postsArray));
   }
 };
-
 
 filterButtons.addEventListener('click', onButtonChangePosts);
 

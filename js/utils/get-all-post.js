@@ -1,5 +1,4 @@
-import { picturesList } from './modal/variables.js';
-import {picturesConteiner, templatePicture} from './variables.js';
+import {picturesConteiner, picturesList, templatePicture} from '../variables.js';
 
 const getAllPosts = (posts) => {
   const similarListFragment = document.createDocumentFragment();

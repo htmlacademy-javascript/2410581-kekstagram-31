@@ -1,6 +1,5 @@
-import {preview, sliderValue, rangeSlider} from '../variables.js';
-import {changeStyle} from './utils/change-style.js';
-import {valueProperty, styleProperty} from './utils/on-preview-change-style.js';
+import { preview, rangeSlider, sliderValue } from '../variables.js';
+import {valueProperty, styleProperty, changeStyle} from '../modal/utils/on-preview-change-style.js';
 
 const getNoUiSlider = () => {
   noUiSlider.create(rangeSlider, {

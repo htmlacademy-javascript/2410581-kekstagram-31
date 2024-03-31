@@ -1,6 +1,5 @@
-import {onDocumentKeyDown} from '../modal/utils/on-document-key-down.js';
-import {documentBody} from '../modal/variables.js';
-import {onButtonCloseMessage} from './utils/on-button-close-message.js';
+import { documentBody } from '../variables.js';
+import {onButtonCloseMessage, onDocumentKeyDown} from '../modal/index.js';
 
 const getUploadMessage = (messageElement, classText) => {
   documentBody.append(messageElement);
@@ -9,4 +8,4 @@ const getUploadMessage = (messageElement, classText) => {
   buttonMessageClose.addEventListener('click', onButtonCloseMessage);
 };
 
-export {getUploadMessage, onButtonCloseMessage};
+export {getUploadMessage};

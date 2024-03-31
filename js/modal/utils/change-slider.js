@@ -1,4 +1,4 @@
-import {rangeSlider} from '../../variables';
+import {rangeSlider} from '../../variables.js';
 
 const changeSlider = (min, max, step) => rangeSlider.noUiSlider.updateOptions({
   range: {

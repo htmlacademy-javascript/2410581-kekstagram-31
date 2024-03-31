@@ -1,5 +1,5 @@
-import {makeElements} from './make-element.js';
 import {settings} from '../../settings.js';
+import {makeElements} from '../../utils/make-element.js';
 
 const commentsGeneration = (comments) => {
   const commentsList = document.querySelector('.social__comments');
