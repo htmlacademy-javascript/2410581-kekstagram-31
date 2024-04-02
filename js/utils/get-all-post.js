@@ -1,7 +1,9 @@
-import {picturesConteiner, templatePicture} from './variables.js';
+import {picturesList, templatePicture} from '../variables.js';
 
 const getAllPosts = (posts) => {
   const similarListFragment = document.createDocumentFragment();
+  const pictures = picturesList.querySelectorAll('.picture');
+  pictures.forEach((item) => item.remove());
 
   posts.forEach(({id, url, description, comments, likes}) => {
     const similarListElement = templatePicture.cloneNode(true);
@@ -12,7 +14,7 @@ const getAllPosts = (posts) => {
     similarListElement.querySelector('.picture__likes').textContent = likes;
     similarListFragment.append(similarListElement);
   });
-  picturesConteiner.append(similarListFragment);
+  picturesList.append(similarListFragment);
 };
 
 export {getAllPosts};

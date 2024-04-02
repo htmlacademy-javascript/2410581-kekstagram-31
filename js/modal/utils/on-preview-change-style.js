@@ -1,10 +1,13 @@
-import {preview, sliderContainer, sliderValue} from '../../variables';
-import {changeSlider} from './change-slider';
-import {changeStyle} from './change-style';
-import {filters} from '../../../settings';
+import {changeSlider} from './change-slider.js';
+import {sliders} from '../../settings.js';
+import {preview, sliderContainer, sliderValue} from '../../variables.js';
 
 let valueProperty = '';
 let styleProperty = '';
+
+const changeStyle = () => {
+  preview.style.filter = `${styleProperty}(${sliderValue.value}${valueProperty})`;
+};
 
 const onPreviewChangeStyle = (evt) => {
   sliderContainer.classList.remove('hidden');
@@ -13,9 +16,10 @@ const onPreviewChangeStyle = (evt) => {
   preview.style.removeProperty('filter');
   const currentEffect = evt.target.id;
 
-  if ([currentEffect] in filters) {
-    const effectSetting = filters[currentEffect];
+  if ([currentEffect] in sliders) {
+    const effectSetting = sliders[currentEffect];
     const sliderValues = effectSetting.sliderValues;
+
     changeSlider(sliderValues[0], sliderValues[1], sliderValues[2]);
     styleProperty = effectSetting.styleProperty;
     valueProperty = effectSetting.valueProperty;
@@ -28,4 +32,4 @@ const onPreviewChangeStyle = (evt) => {
 
 };
 
-export {valueProperty, styleProperty, onPreviewChangeStyle};
+export {valueProperty, styleProperty, onPreviewChangeStyle, changeStyle};

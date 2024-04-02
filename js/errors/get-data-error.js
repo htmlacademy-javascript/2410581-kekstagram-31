@@ -1,12 +1,14 @@
-import {errorAllPosts} from './variables.js';
-import {documentBody} from '../modal/variables.js';
 import {settings} from '../settings.js';
+import {documentBody, templateErrorPosts} from '../variables.js';
 
-const getDataError = () => {
-  documentBody.append(errorAllPosts);
+const getDataError = (text) => {
+  documentBody.append(templateErrorPosts);
+  if (text) {
+    templateErrorPosts.querySelector('.data-error__title').textContent = text;
+  }
 
   setTimeout(() => {
-    errorAllPosts.remove();
+    templateErrorPosts.remove();
   }, settings.ALERT_SHOW_TIME);
 };
 
