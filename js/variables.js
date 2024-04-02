@@ -1,12 +1,10 @@
 // templates
 
-const templatePicture = document
-  .querySelector('#picture')
+const templatePicture = document.querySelector('#picture')
   .content
   .querySelector('.picture');
 
-const templateErrorPosts = document
-  .querySelector('#data-error')
+const templateErrorPosts = document.querySelector('#data-error')
   .content
   .querySelector('.data-error');
 
@@ -62,8 +60,4 @@ const sliderContainer = uploadForm.querySelector('.img-upload__effect-level');
 const effectList = uploadForm.querySelector('.effects__list');
 const effectNone = document.querySelector('#effect-none');
 
-// Главный экран
-
-const picturesConteiner = document.querySelector('.pictures');
-
-export {picturesConteiner, templatePicture, picturesList, bigPicture, buttonClose, commentLoader, commentsCount, documentBody, showMoreButton, socialCommentsList, commentsTotalCount, numberOfComments, bigImg, likes, description, filterButtons, templateErrorPosts, templateMessageSuccess, templateMessageError, submitButton, uploadFile, uploadOverlay, buttonCloseUploadModal, preview, previews, textDescription, uploadForm, hashtags, scaleControls, scaleControlValue, sliderValue, rangeSlider, sliderContainer, effectList, effectNone};
+export {picturesList, templatePicture, bigPicture, buttonClose, commentLoader, commentsCount, documentBody, showMoreButton, socialCommentsList, commentsTotalCount, numberOfComments, bigImg, likes, description, filterButtons, templateErrorPosts, templateMessageSuccess, templateMessageError, submitButton, uploadFile, uploadOverlay, buttonCloseUploadModal, preview, previews, textDescription, uploadForm, hashtags, scaleControls, scaleControlValue, sliderValue, rangeSlider, sliderContainer, effectList, effectNone};

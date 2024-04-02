@@ -1,5 +1,5 @@
 import {settings} from '../settings.js';
-import { documentBody, templateErrorPosts } from '../variables.js';
+import {documentBody, templateErrorPosts} from '../variables.js';
 
 const getDataError = (text) => {
   documentBody.append(templateErrorPosts);

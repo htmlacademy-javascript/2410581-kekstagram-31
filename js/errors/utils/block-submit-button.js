@@ -1,5 +1,5 @@
 import {settings} from '../../settings.js';
-import { submitButton } from '../../variables.js';
+import {submitButton} from '../../variables.js';
 
 const blockSubmitButton = () => {
   submitButton.disabled = true;

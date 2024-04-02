@@ -1,4 +1,4 @@
-import { documentBody } from '../variables.js';
+import {documentBody} from '../variables.js';
 import {onButtonCloseMessage, onDocumentKeyDown} from '../modal/index.js';
 
 const getUploadMessage = (messageElement, classText) => {

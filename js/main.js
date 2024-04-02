@@ -2,7 +2,7 @@ import {getDataError} from './errors/get-data-error.js';
 import {getData} from './api/get-data.js';
 import {getAllPosts} from './utils/get-all-post.js';
 import {makeEventClick} from './modal/utils/make-event-click.js';
-import {getArray} from './filters/index.js';
+import {getCommentsArray} from './filters/index.js';
 import {onButtonOpenUploadModal} from './modal/index.js';
 import {filterButtons, uploadFile} from './variables.js';
 
@@ -12,7 +12,7 @@ getData()
   .then((posts) => {
     getAllPosts(posts);
     makeEventClick(posts);
-    getArray(posts);
+    getCommentsArray(posts);
   })
   .then(() => filterButtons.classList.remove('img-filters--inactive'))
   .catch(() => getDataError());

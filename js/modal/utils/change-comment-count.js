@@ -1,5 +1,5 @@
 import {settings} from '../../settings.js';
-import { commentsTotalCount, numberOfComments } from '../../variables.js';
+import {commentsTotalCount, numberOfComments} from '../../variables.js';
 
 const changeCommentCount = (comments) => {
   commentsTotalCount.textContent = comments.length;

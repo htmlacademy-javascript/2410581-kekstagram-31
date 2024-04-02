@@ -1,13 +1,13 @@
 import {settings} from '../settings.js';
 import {isEscapeKey, isFieldFocused} from './utils/checks.js';
 import {onFormCheckValidate, pristine} from './utils/check-form.js';
-import { onButtonChangeScale } from './utils/change-scale.js';
-import { onPreviewChangeStyle } from './utils/on-preview-change-style.js';
-import { getNoUiSlider } from '../utils/get-no-ui-slider.js';
-import { bigPicture, buttonClose, buttonCloseUploadModal, commentLoader, commentsCount, commentsTotalCount, documentBody, effectList, effectNone, hashtags, numberOfComments, preview, previews, scaleControlValue, scaleControls, showMoreButton, sliderContainer, sliderValue, socialCommentsList, textDescription, uploadFile, uploadForm, templateMessageError, templateMessageSuccess, uploadOverlay } from '../variables.js';
-import { checkHashtagduplicate } from './utils/pristine-checks.js';
-import { makeElements } from '../utils/make-element.js';
-import { getDataError } from '../errors/get-data-error.js';
+import {onButtonChangeScale} from './utils/change-scale.js';
+import {onPreviewChangeStyle} from './utils/on-preview-change-style.js';
+import {getNoUiSlider} from '../utils/get-no-ui-slider.js';
+import {bigPicture, buttonClose, buttonCloseUploadModal, commentLoader, commentsCount, commentsTotalCount, documentBody, effectList, effectNone, hashtags, numberOfComments, preview, previews, scaleControlValue, scaleControls, showMoreButton, sliderContainer, sliderValue, socialCommentsList, textDescription, uploadFile, uploadForm, templateMessageError, templateMessageSuccess, uploadOverlay} from '../variables.js';
+import {checkHashtagDuplicate} from './utils/pristine-checks.js';
+import {makeElements} from '../utils/make-element.js';
+import {getDataError} from '../errors/get-data-error.js';
 
 let comments;
 getNoUiSlider();
@@ -78,26 +78,28 @@ const onDocumentKeyDown = (evt) => {
 // Закрытие модальных окон и сообщений
 
 function onButtonCloseUploadModal() {
-  documentBody.classList.remove('modal-open');
   uploadOverlay.classList.add('hidden');
+  sliderContainer.classList.add('hidden');
+  documentBody.classList.remove('modal-open');
+
+  uploadFile.addEventListener('change', onButtonOpenUploadModal);
+
   document.removeEventListener('keydown', onDocumentKeyDown);
   buttonCloseUploadModal.removeEventListener('click', onButtonCloseUploadModal);
-  uploadFile.addEventListener('change', onButtonOpenUploadModal);
+  effectList.removeEventListener('change', onPreviewChangeStyle);
+  scaleControls.removeEventListener('click', onButtonChangeScale);
+
+  preview.style.removeProperty('transform');
+  preview.style.removeProperty('filter');
+
   scaleControlValue.value = '100%';
   textDescription.value = '';
-  checkHashtagduplicate.value = '';
+  checkHashtagDuplicate.value = '';
   uploadFile.value = '';
   sliderValue.value = '';
   hashtags.value = '';
   effectNone.checked = true;
   pristine.reset();
-
-  scaleControls.removeEventListener('click', onButtonChangeScale);
-  preview.style.removeProperty('transform');
-
-  preview.style.removeProperty('filter');
-  sliderContainer.classList.add('hidden');
-  effectList.removeEventListener('change', onPreviewChangeStyle);
 }
 
 function onButtonCloseMessage(evt) {
@@ -117,12 +119,15 @@ function onButtonCloseMessage(evt) {
 
 function onButtonCloseModal() {
   bigPicture.classList.add('hidden');
+
   commentsCount.classList.remove('hidden');
   commentLoader.classList.remove('hidden');
   documentBody.classList.remove('modal-open');
+
   buttonClose.removeEventListener('click', onButtonCloseModal);
   document.removeEventListener('keydown', onDocumentKeyDown);
   showMoreButton.removeEventListener('click', onButtonAddComments);
+
   numberOfComments.textContent = 'Загрузка...';
   commentsTotalCount.textContent = 'Загрузка...';
   socialCommentsList.innerHTML = 'Загрузка...';
@@ -131,10 +136,13 @@ function onButtonCloseModal() {
 // Открытие модальных окон
 
 const onPhotoOpenModal = (posts, currentId) => {
-  bigPicture.classList.remove('hidden');
   documentBody.classList.add('modal-open');
+
+  bigPicture.classList.remove('hidden');
+
   buttonClose.addEventListener('click', onButtonCloseModal);
   document.addEventListener('keydown', onDocumentKeyDown);
+
   showMoreComments(posts[currentId].comments);
   comments = posts[currentId].comments;
 };
@@ -145,21 +153,22 @@ function onButtonOpenUploadModal() {
 
   if (settings.FILE_TYPES.includes(fileExt)) {
     documentBody.classList.add('modal-open');
-    uploadOverlay.classList.remove('hidden');
     sliderContainer.classList.add('hidden');
+
+    uploadOverlay.classList.remove('hidden');
 
     buttonCloseUploadModal.addEventListener('click', onButtonCloseUploadModal);
     document.addEventListener('keydown', onDocumentKeyDown);
-    uploadFile.removeEventListener('change', onButtonOpenUploadModal);
-    preview.src = URL.createObjectURL(file);
-    previews.forEach((item) => {
-      item.style.backgroundImage = `url(${URL.createObjectURL(file)})`;
-    });
-
     uploadForm.addEventListener('submit', onFormCheckValidate);
     scaleControls.addEventListener('click', onButtonChangeScale);
     effectList.addEventListener('change', onPreviewChangeStyle);
 
+    uploadFile.removeEventListener('change', onButtonOpenUploadModal);
+
+    preview.src = URL.createObjectURL(file);
+    previews.forEach((item) => {
+      item.style.backgroundImage = `url(${URL.createObjectURL(file)})`;
+    });
   } else {
     getDataError('Некорректный формат изображения');
   }

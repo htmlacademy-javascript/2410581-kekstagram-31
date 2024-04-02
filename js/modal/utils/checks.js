@@ -1,4 +1,4 @@
-import { hashtags, textDescription } from '../../variables.js';
+import {hashtags, textDescription} from '../../variables.js';
 
 const isEscapeKey = (evt) => evt.key === 'Escape';
 const isEnterKey = (evt) => evt.key === 'Enter';
