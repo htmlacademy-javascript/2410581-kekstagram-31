@@ -22,6 +22,8 @@ const settings = {
   IDLE: 'Опубликовать',
   SENDING: 'Публикую...',
   FILE_TYPES: ['jpg', 'jpeg', 'png', 'gif'],
+  NEW_ELEMENT_WIDTH: '35px',
+  NEW_ELEMENT_HEIGHT: '35px',
 };
 
 // Настройки слайдера
